@@ -17,7 +17,7 @@ COPY server/package*.json ./
 RUN npm install
 
 # Copiar el resto del código del backend (incluye db/notas.db)
-COPY server/ ./
+COPY server/ .
 
 # Exponer puerto de la aplicación
 EXPOSE 3000

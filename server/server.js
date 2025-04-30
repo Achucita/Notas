@@ -6,7 +6,7 @@ const serve = require('koa-static');
 const path = require('path');
 const send = require('koa-send');
 const { v4: uuidv4 } = require('uuid');
-const db = require('./database');
+const db = require('./db');
 const { registrarUsuario, loginUsuario, verificarToken } = require('./auth');
 
 const app = new Koa();

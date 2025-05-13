@@ -21,6 +21,10 @@ jobs:
       working-directory: server
       run: npm install
 
+    - name: Ensure mocha is executable
+      working-directory: server
+      run: chmod +x ./node_modules/.bin/mocha
+
     - name: Run backend tests
       working-directory: server
       run: npm test

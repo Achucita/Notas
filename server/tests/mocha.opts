@@ -1,0 +1,2 @@
+--require tests/setup.js
+--timeout 10000

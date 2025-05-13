@@ -19,11 +19,11 @@ jobs:
 
     - name: Install backend dependencies
       working-directory: server
-      run: npm install
+      run: npm install --save-dev mocha
 
     - name: Run backend tests
       working-directory: server
-      run: npm test
+      run: npx mocha tests/**/*.test.js --exit
       env:
         NODE_ENV: test
         JWT_SECRET: ${{ secrets.JWT_SECRET || 'test-secret-key' }}
@@ -48,4 +48,3 @@ jobs:
     - name: Push image to Docker Hub
       if: success()
       run: docker push ${{ secrets.DOCKER_USERNAME }}/notasavisos:latest
-

@@ -19,15 +19,19 @@ jobs:
 
     - name: Install backend dependencies
       working-directory: server
-      run: npm install
-
-    - name: Ensure mocha is executable
+      run: npm install --save-dev mocha
+    
+    - name: Verify Mocha Installation
       working-directory: server
-      run: chmod +x ./node_modules/.bin/mocha
+      run: ls -la node_modules/.bin
+
+    - name: Fix Mocha Permissions
+      working-directory: server
+      run: chmod +x node_modules/.bin/mocha 
 
     - name: Run backend tests
       working-directory: server
-      run: npm test
+      run: npx mocha tests/**/*.test.js --exit
       env:
         NODE_ENV: test
         JWT_SECRET: ${{ secrets.JWT_SECRET || 'test-secret-key' }}
